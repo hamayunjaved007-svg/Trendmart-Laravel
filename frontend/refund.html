@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Refund Policy - Trend Mart Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<style>
+    * {
+        font-family: 'Inter', sans-serif;
+    }
+
+    :root {
+        --primary-orange: #FC6402;
+        --light-bg: #f8f9fa;
+        --text-dark: #1a1a2e;
+        --text-gray: #6c757d;
+    }
+
+    .bg-orange {
+        background-color: var(--primary-orange);
+    }
+
+    .text-orange {
+        color: var(--primary-orange);
+    }
+
+    .border-orange {
+        border-color: var(--primary-orange) !important;
+    }
+
+    .btn-orange {
+        background-color: var(--primary-orange);
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-orange:hover {
+        background-color: #e05a00;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(252, 100, 2, 0.3);
+    }
+
+    .btn-outline-orange {
+        border: 2px solid var(--primary-orange);
+        color: var(--primary-orange);
+        background: transparent;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-orange:hover {
+        background-color: var(--primary-orange);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(252, 100, 2, 0.2);
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        position: relative;
+        margin-bottom: 15px;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: var(--primary-orange);
+        margin-top: 10px;
+        border-radius: 2px;
+    }
+
+    .section-title.text-center::after {
+        margin: 10px auto 0;
+    }
+
+    .section-subtitle {
+        color: var(--text-gray);
+        font-size: 1.1rem;
+        font-weight: 300;
+    }
+
+    .section-badge {
+        color: var(--primary-orange);
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    /* ===== PAGE HEADER ===== */
+    .page-header {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        padding: 40px 0 30px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .breadcrumb {
+        background: transparent;
+        padding: 0;
+        margin-bottom: 5px;
+    }
+
+    .breadcrumb-item a {
+        color: var(--text-gray);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .breadcrumb-item a:hover {
+        color: var(--primary-orange);
+    }
+
+    .breadcrumb-item.active {
+        color: var(--primary-orange);
+    }
+
+    /* ===== POLICY CONTENT ===== */
+    .policy-section {
+        padding: 50px 0 60px;
+        background: #fff;
+    }
+
+    .policy-content {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .policy-content .last-updated {
+        background: #f8f9fa;
+        padding: 12px 20px;
+        border-radius: 12px;
+        color: var(--text-gray);
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+        border-left: 4px solid var(--primary-orange);
+    }
+
+    .policy-content .last-updated i {
+        color: var(--primary-orange);
+        margin-right: 8px;
+    }
+
+    .policy-content h3 {
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-top: 35px;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+
+    .policy-content h3 i {
+        color: var(--primary-orange);
+        margin-right: 10px;
+        width: 30px;
+    }
+
+    .policy-content p {
+        color: var(--text-gray);
+        line-height: 1.9;
+        margin-bottom: 18px;
+        font-size: 1rem;
+    }
+
+    .policy-content ul {
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .policy-content ul li {
+        color: var(--text-gray);
+        line-height: 1.8;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        list-style: none;
+        padding-left: 25px;
+        position: relative;
+    }
+
+    .policy-content ul li::before {
+        content: '▸';
+        color: var(--primary-orange);
+        position: absolute;
+        left: 0;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    .policy-content .info-box {
+        background: #f8f9fa;
+        border-radius: 16px;
+        padding: 25px 30px;
+        margin: 25px 0;
+        border-left: 4px solid var(--primary-orange);
+    }
+
+    .policy-content .info-box h5 {
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+    }
+
+    .policy-content .info-box h5 i {
+        color: var(--primary-orange);
+        margin-right: 8px;
+    }
+
+    .policy-content .info-box p {
+        margin-bottom: 0;
+    }
+
+    .policy-content .table {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #f0f0f0;
+    }
+
+    .policy-content .table thead {
+        background: var(--primary-orange);
+        color: #fff;
+    }
+
+    .policy-content .table thead th {
+        border: none;
+        padding: 15px 20px;
+        font-weight: 600;
+    }
+
+    .policy-content .table tbody td {
+        padding: 15px 20px;
+        vertical-align: middle;
+        color: var(--text-gray);
+        border-color: #f0f0f0;
+    }
+
+    .policy-content .table tbody tr:hover {
+        background: #f8f9fa;
+    }
+
+    .policy-content .table tbody td i {
+        color: var(--primary-orange);
+        margin-right: 5px;
+    }
+
+    .policy-content .table tbody td .text-green {
+        color: #00c851;
+    }
+
+    .policy-content .table tbody td .text-red {
+        color: #f44336;
+    }
+
+    /* ===== PROCESS STEPS ===== */
+    .process-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+    }
+
+    .process-steps .step {
+        text-align: center;
+        padding: 25px 20px;
+        background: #fff;
+        border-radius: 16px;
+        border: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .process-steps .step:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        border-color: var(--primary-orange);
+    }
+
+    .process-steps .step .step-number {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background: var(--primary-orange);
+        color: #fff;
+        border-radius: 50%;
+        line-height: 50px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .process-steps .step:hover .step-number {
+        transform: scale(1.1);
+    }
+
+    .process-steps .step h6 {
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+    }
+
+    .process-steps .step p {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+        margin-bottom: 0;
+        line-height: 1.5;
+    }
+
+    /* ===== FAQ SECTION ===== */
+    .faq-section {
+        margin-top: 40px;
+        padding-top: 40px;
+        border-top: 1px solid #f0f0f0;
+    }
+
+    .faq-section .accordion-item {
+        border: 1px solid #f0f0f0;
+        margin-bottom: 12px;
+        border-radius: 12px !important;
+        overflow: hidden;
+    }
+
+    .faq-section .accordion-button {
+        padding: 18px 25px;
+        font-weight: 600;
+        color: var(--text-dark);
+        background: #fff;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .faq-section .accordion-button:not(.collapsed) {
+        color: var(--primary-orange);
+        background: rgba(252, 100, 2, 0.04);
+        box-shadow: none;
+    }
+
+    .faq-section .accordion-button:focus {
+        box-shadow: none;
+        border-color: var(--primary-orange);
+    }
+
+    .faq-section .accordion-button i {
+        color: var(--primary-orange);
+        margin-right: 10px;
+    }
+
+    .faq-section .accordion-body {
+        padding: 0 25px 20px;
+        color: var(--text-gray);
+        line-height: 1.8;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .process-steps {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .page-header {
+            padding: 25px 0 15px;
+        }
+
+        .policy-section {
+            padding: 30px 0 40px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+        }
+
+        .policy-content h3 {
+            font-size: 1.3rem;
+        }
+
+        .policy-content .info-box {
+            padding: 18px 20px;
+        }
+
+        .policy-content .table {
+            font-size: 0.9rem;
+        }
+
+        .policy-content .table thead th,
+        .policy-content .table tbody td {
+            padding: 10px 12px;
+        }
+
+        .process-steps {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .process-steps .step {
+            padding: 20px;
+        }
+
+        .faq-section .accordion-button {
+            padding: 14px 18px;
+            font-size: 0.95rem;
+        }
+
+        .faq-section .accordion-body {
+            padding: 0 18px 15px;
+            font-size: 0.95rem;
+        }
+    }
+</style>
+
+<body>
+
+    <!-- ============================================================ -->
+    <!-- PAGE HEADER WITH BREADCRUMB -->
+    <!-- ============================================================ -->
+    <section class="page-header">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Refund Policy</li>
+                </ol>
+            </nav>
+            <h1 class="section-title">Refund Policy</h1>
+            <p class="section-subtitle">Our commitment to your satisfaction</p>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- POLICY CONTENT -->
+    <!-- ============================================================ -->
+    <section class="policy-section">
+        <div class="container">
+            <div class="policy-content">
+
+                <!-- Last Updated -->
+                <div class="last-updated">
+                    <i class="fa fa-calendar"></i> Last Updated: January 15, 2026
+                </div>
+
+                <!-- Introduction -->
+                <p>
+                    At <strong>Trend Mart Online</strong>, we are committed to ensuring your complete satisfaction
+                    with every purchase. If you are not entirely satisfied with your purchase, we're here to help.
+                    This Refund Policy outlines the terms and conditions for returns, refunds, and exchanges.
+                </p>
+
+                <!-- 30-Day Guarantee -->
+                <div class="info-box">
+                    <h5><i class="fa fa-check-circle"></i> 30-Day Money-Back Guarantee</h5>
+                    <p>
+                        We offer a <strong>30-day money-back guarantee</strong> on all products purchased from
+                        Trend Mart Online. If for any reason you are not satisfied with your purchase, you may
+                        return it within 30 days of receipt for a full refund or exchange.
+                    </p>
+                </div>
+
+                <!-- Return Conditions -->
+                <h3><i class="fa fa-list"></i> Return Conditions</h3>
+                <p>To be eligible for a return, please ensure that:</p>
+                <ul>
+                    <li>Items must be returned within <strong>30 days</strong> of the delivery date.</li>
+                    <li>Items must be in <strong>original condition</strong> - unused, unwashed, and with all tags
+                        attached.</li>
+                    <li>Items must be in the <strong>original packaging</strong> with all accessories and documentation.
+                    </li>
+                    <li>Proof of purchase (order number or receipt) is required.</li>
+                    <li>Return shipping costs are covered by Trend Mart Online for defective or incorrect items.</li>
+                </ul>
+
+                <!-- Non-Returnable Items -->
+                <h3><i class="fa fa-ban"></i> Non-Returnable Items</h3>
+                <ul>
+                    <li>Items that have been <strong>used, washed, or damaged</strong> by the customer.</li>
+                    <li>Items returned <strong>beyond 30 days</strong> of the delivery date.</li>
+                    <li><strong>Personalized or custom-made</strong> items.</li>
+                    <li><strong>Perishable goods</strong> (food, flowers, etc.).</li>
+                    <li><strong>Personal care items</strong> (cosmetics, skincare, etc.) that have been opened.</li>
+                    <li><strong>Digital products</strong> and downloadable content.</li>
+                </ul>
+
+                <!-- Refund Process -->
+                <h3><i class="fa fa-exchange"></i> Refund Process</h3>
+                <p>Follow these steps to initiate a return or refund:</p>
+
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h6>Contact Us</h6>
+                        <p>Reach out to our support team with your order number and reason for return.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h6>Get Authorization</h6>
+                        <p>Receive return authorization and shipping instructions from our team.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h6>Ship Item Back</h6>
+                        <p>Pack the item securely and ship it to our returns center.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h6>Receive Refund</h6>
+                        <p>We process your refund within 5-7 business days after receiving the return.</p>
+                    </div>
+                </div>
+
+                <!-- Refund Timeline -->
+                <h3><i class="fa fa-clock-o"></i> Refund Timeline</h3>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><i class="fa fa-hourglass"></i> Stage</th>
+                                <th><i class="fa fa-clock-o"></i> Timeframe</th>
+                                <th><i class="fa fa-info-circle"></i> Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fa fa-envelope"></i> Return Request</td>
+                                <td>Within 24 hours</td>
+                                <td>Response to your return request</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-truck"></i> Shipping Back</td>
+                                <td>5-7 business days</td>
+                                <td>Time for item to reach our returns center</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-search"></i> Inspection</td>
+                                <td>2-3 business days</td>
+                                <td>We inspect the returned item</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-credit-card"></i> Refund Issued</td>
+                                <td>5-7 business days</td>
+                                <td>Refund processed to original payment method</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-check-circle text-green"></i> Total Time</td>
+                                <td><strong>12-17 business days</strong></td>
+                                <td><span class="text-green">Full refund completion</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Shipping Costs -->
+                <h3><i class="fa fa-truck"></i> Shipping Costs for Returns</h3>
+                <ul>
+                    <li>
+                        <i class="fa fa-check-circle text-green"></i>
+                        <strong>Free returns</strong> for defective, damaged, or incorrect items.
+                    </li>
+                    <li>
+                        <i class="fa fa-check-circle text-green"></i>
+                        <strong>Free returns</strong> for orders over $50 (customer's choice).
+                    </li>
+                    <li>
+                        <i class="fa fa-times-circle text-red"></i>
+                        <strong>Return shipping cost</strong> is the customer's responsibility for non-defective returns
+                        on orders under $50.
+                    </li>
+                    <li>
+                        <i class="fa fa-info-circle"></i>
+                        Original shipping charges are non-refundable unless the return is due to our error.
+                    </li>
+                </ul>
+
+                <!-- Cash on Delivery Refunds -->
+                <h3><i class="fa fa-money"></i> Cash on Delivery (COD) Refunds</h3>
+                <ul>
+                    <li>
+                        <i class="fa fa-check-circle text-green"></i>
+                        For COD orders, refunds are processed via <strong>bank transfer or store credit</strong>.
+                    </li>
+                    <li>
+                        <i class="fa fa-check-circle text-green"></i>
+                        Refunds are issued to your <strong>bank account</strong> within 7-10 business days.
+                    </li>
+                    <li>
+                        <i class="fa fa-check-circle text-green"></i>
+                        You may also choose <strong>store credit</strong> for faster processing (2-3 business days).
+                    </li>
+                    <li>
+                        <i class="fa fa-info-circle"></i>
+                        Please ensure accurate bank details are provided for COD refunds.
+                    </li>
+                </ul>
+
+                <!-- Exchanges -->
+                <h3><i class="fa fa-arrows-h"></i> Exchanges</h3>
+                <p>
+                    If you would like to exchange an item for a different size, color, or variant, please contact our
+                    support team. We will assist you with the exchange process. Exchange shipping is free for all
+                    orders.
+                </p>
+
+                <!-- Damaged or Defective Items -->
+                <div class="info-box">
+                    <h5><i class="fa fa-exclamation-triangle"></i> Damaged or Defective Items</h5>
+                    <p>
+                        If you receive a damaged, defective, or incorrect item, please contact us immediately at
+                        <a href="mailto:support@trendmart.com" class="text-orange">support@trendmart.com</a>
+                        with your order number and photos of the item. We will arrange for a free replacement
+                        or full refund, including shipping costs.
+                    </p>
+                </div>
+
+                <!-- How to Initiate a Return -->
+                <h3><i class="fa fa-envelope"></i> How to Initiate a Return</h3>
+                <p>To start a return, please follow these steps:</p>
+                <ul>
+                    <li>
+                        <i class="fa fa-envelope-o"></i>
+                        Email us at <a href="mailto:returns@trendmart.com" class="text-orange">returns@trendmart.com</a>
+                        with your order number.
+                    </li>
+                    <li>
+                        <i class="fa fa-phone"></i>
+                        Call our support team at <strong class="text-orange">+1 234 567 890</strong>.
+                    </li>
+                    <li>
+                        <i class="fa fa-comments"></i>
+                        Use our <a href="#" class="text-orange">Live Chat</a> feature on our website.
+                    </li>
+                    <li>
+                        <i class="fa fa-info-circle"></i>
+                        Include your order number, the item(s) you wish to return, and the reason for return.
+                    </li>
+                </ul>
+
+                <!-- Contact Information -->
+                <div class="info-box" style="border-color: var(--primary-orange); background: rgba(252, 100, 2, 0.04);">
+                    <h5><i class="fa fa-headphones"></i> Need Help?</h5>
+                    <p>
+                        If you have any questions about our Refund Policy or need assistance with a return,
+                        our customer support team is here to help.
+                    </p>
+                    <p style="margin-top: 10px;">
+                        <i class="fa fa-envelope text-orange"></i> support@trendmart.com<br>
+                        <i class="fa fa-phone text-orange"></i> +1 234 567 890<br>
+                        <i class="fa fa-clock-o text-orange"></i> Mon-Fri, 9AM - 6PM EST
+                    </p>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="faq-section">
+                    <h3 style="margin-top: 0;"><i class="fa fa-question-circle"></i> Frequently Asked Questions</h3>
+
+                    <div class="accordion" id="refundFaq">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    <i class="fa fa-clock-o"></i> How long does it take to get a refund?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#refundFaq">
+                                <div class="accordion-body">
+                                    Once we receive your returned item and it passes inspection, refunds are processed
+                                    within 5-7 business days. The total time from return request to refund completion
+                                    is typically 12-17 business days.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    <i class="fa fa-shipping"></i> Who pays for return shipping?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#refundFaq">
+                                <div class="accordion-body">
+                                    Return shipping is free for defective, damaged, or incorrect items. For other
+                                    returns,
+                                    shipping costs are covered by the customer unless the order total is over $50,
+                                    in which case return shipping is free.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    <i class="fa fa-money"></i> How do I get a refund for COD orders?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#refundFaq">
+                                <div class="accordion-body">
+                                    For Cash on Delivery orders, refunds are processed via bank transfer or store
+                                    credit.
+                                    Please provide your bank account details when initiating the return. Bank transfers
+                                    take 7-10 business days, while store credit is processed within 2-3 business days.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                    <i class="fa fa-box"></i> Can I exchange an item instead of a refund?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#refundFaq">
+                                <div class="accordion-body">
+                                    Yes, we offer free exchanges for size, color, or variant changes. Contact our
+                                    support team to initiate an exchange. Exchange shipping is free for all orders.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq5">
+                                    <i class="fa fa-tag"></i> What items are not eligible for return?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#refundFaq">
+                                <div class="accordion-body">
+                                    Items that are used, washed, damaged by the customer, personalized items, perishable
+                                    goods, opened personal care items, and digital products are not eligible for return.
+                                    Please review our Non-Returnable Items section for complete details.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq6">
+                                    <i class="fa fa-credit-card"></i> How will I receive my refund?
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#refundFaq">
+                                <div class="accordion-body">
+                                    Refunds are issued to the original payment method used for the purchase. For credit
+                                    card payments, the refund will appear on your credit card statement. For COD orders,
+                                    refunds are processed via bank transfer or store credit.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- BOOTSTRAP JS -->
+    <!-- ============================================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

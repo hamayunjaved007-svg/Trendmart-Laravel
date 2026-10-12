@@ -1,0 +1,1173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trend Mart Online - Smart Shopping, Better Prices</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<style>
+    * {
+        font-family: 'Inter', sans-serif;
+    }
+
+    :root {
+        --primary-orange: #FC6402;
+        --light-bg: #f8f9fa;
+        --text-dark: #1a1a2e;
+        --text-gray: #6c757d;
+    }
+
+    .bg-orange {
+        background-color: var(--primary-orange);
+    }
+
+    .text-orange {
+        color: var(--primary-orange);
+    }
+
+    .border-orange {
+        border-color: var(--primary-orange) !important;
+    }
+
+    .btn-orange {
+        background-color: var(--primary-orange);
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-orange:hover {
+        background-color: #e05a00;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(252, 100, 2, 0.3);
+    }
+
+    .btn-outline-orange {
+        border: 2px solid var(--primary-orange);
+        color: var(--primary-orange);
+        background: transparent;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-orange:hover {
+        background-color: var(--primary-orange);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(252, 100, 2, 0.2);
+    }
+
+    /* ===== TOP BAR ===== */
+    .top-bar {
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        padding: 8px 0;
+        font-size: 0.85rem;
+    }
+
+    .top-bar .contact-info a {
+        color: var(--text-gray);
+        text-decoration: none;
+        margin-right: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .top-bar .contact-info a:hover {
+        color: var(--primary-orange);
+    }
+
+    .top-bar .contact-info i {
+        color: var(--primary-orange);
+        margin-right: 5px;
+    }
+
+    .top-bar .top-links a {
+        color: var(--text-gray);
+        text-decoration: none;
+        margin-left: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .top-bar .top-links a:hover {
+        color: var(--primary-orange);
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+        background: #fff !important;
+        padding: 15px 0;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .navbar .nav-link {
+        color: var(--text-dark) !important;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 8px 18px !important;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .navbar .nav-link:hover {
+        color: var(--primary-orange) !important;
+    }
+
+    .navbar .nav-link.active {
+        color: var(--primary-orange) !important;
+    }
+
+    .navbar .nav-link i {
+        margin-right: 6px;
+    }
+
+    .navbar .dropdown-menu {
+        border: 1px solid #eee;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar .dropdown-item {
+        color: var(--text-dark);
+        transition: all 0.3s ease;
+    }
+
+    .navbar .dropdown-item:hover {
+        background-color: var(--primary-orange);
+        color: #fff;
+    }
+
+    .navbar .dropdown-item i {
+        margin-right: 8px;
+        width: 18px;
+    }
+
+    .cart-badge {
+        background: var(--primary-orange);
+        color: #fff;
+        font-size: 0.65rem;
+        padding: 2px 7px;
+        border-radius: 50px;
+        position: absolute;
+        top: -5px;
+        right: -8px;
+        font-weight: 700;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        padding: 80px 0 70px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(252, 100, 2, 0.06) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .hero-badge {
+        background: rgba(252, 100, 2, 0.1);
+        color: var(--primary-orange);
+        padding: 6px 20px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 20px;
+        border: 1px solid rgba(252, 100, 2, 0.15);
+    }
+
+    .hero-title {
+        font-size: 3.8rem;
+        font-weight: 900;
+        line-height: 1.1;
+        color: var(--text-dark);
+        margin-bottom: 20px;
+    }
+
+    .hero-title .highlight {
+        color: var(--primary-orange);
+        position: relative;
+    }
+
+    .hero-title .highlight::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background: rgba(252, 100, 2, 0.15);
+        border-radius: 4px;
+    }
+
+    .hero-subtitle {
+        color: var(--text-gray);
+        font-size: 1.15rem;
+        line-height: 1.8;
+        max-width: 550px;
+        margin-bottom: 30px;
+        font-weight: 300;
+    }
+
+    .hero-stats {
+        display: flex;
+        gap: 40px;
+        margin-top: 35px;
+    }
+
+    .hero-stats .stat-item {
+        color: var(--text-dark);
+    }
+
+    .hero-stats .stat-number {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--primary-orange);
+        display: block;
+    }
+
+    .hero-stats .stat-label {
+        font-size: 0.85rem;
+        color: var(--text-gray);
+        font-weight: 400;
+    }
+
+    .search-box {
+        background: #fff;
+        border-radius: 60px;
+        padding: 6px 6px 6px 25px;
+        display: flex;
+        align-items: center;
+        max-width: 550px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+        border: 1px solid #eee;
+    }
+
+    .search-box input {
+        border: none;
+        outline: none;
+        flex: 1;
+        padding: 12px 0;
+        font-size: 1rem;
+        background: transparent;
+    }
+
+    .search-box input::placeholder {
+        color: #999;
+    }
+
+    .search-box .btn-search {
+        background: var(--primary-orange);
+        border: none;
+        padding: 12px 30px;
+        border-radius: 50px;
+        color: #fff;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .search-box .btn-search:hover {
+        background: #e05a00;
+        transform: scale(1.02);
+    }
+
+    .hero-image {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-image .floating-card {
+        position: absolute;
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        padding: 12px 20px;
+        border-radius: 16px;
+        color: var(--text-dark);
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        animation: float 3s ease-in-out infinite;
+        border: 1px solid #eee;
+    }
+
+    .hero-image .floating-card i {
+        color: var(--primary-orange);
+        font-size: 1.2rem;
+    }
+
+    .floating-card.card-1 {
+        top: 20%;
+        right: -10%;
+        animation-delay: 0s;
+    }
+
+    .floating-card.card-2 {
+        bottom: 30%;
+        left: -15%;
+        animation-delay: 1.5s;
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+
+    /* ===== SECTION TITLES ===== */
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        position: relative;
+        margin-bottom: 15px;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: var(--primary-orange);
+        margin-top: 10px;
+        border-radius: 2px;
+    }
+
+    .section-title.text-center::after {
+        margin: 10px auto 0;
+    }
+
+    .section-subtitle {
+        color: var(--text-gray);
+        font-size: 1.1rem;
+        font-weight: 300;
+    }
+
+    .section-badge {
+        color: var(--primary-orange);
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    /* ===== CATEGORIES ===== */
+    .category-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 30px 20px;
+        text-align: center;
+        transition: all 0.4s ease;
+        border: 2px solid #f0f0f0;
+        cursor: pointer;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .category-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, var(--primary-orange), #e05a00);
+        opacity: 0;
+        transition: all 0.4s ease;
+        border-radius: 20px;
+    }
+
+    .category-card:hover::before {
+        opacity: 1;
+    }
+
+    .category-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(252, 100, 2, 0.15);
+        border-color: var(--primary-orange);
+    }
+
+    .category-card .icon-wrapper {
+        width: 80px;
+        height: 80px;
+        background: rgba(252, 100, 2, 0.08);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+        position: relative;
+        z-index: 1;
+        transition: all 0.4s ease;
+    }
+
+    .category-card:hover .icon-wrapper {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+
+    .category-card .icon-wrapper i {
+        font-size: 2.5rem;
+        color: var(--primary-orange);
+        transition: all 0.4s ease;
+    }
+
+    .category-card:hover .icon-wrapper i {
+        color: #fff;
+    }
+
+    .category-card h5 {
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+        transition: all 0.4s ease;
+        color: var(--text-dark);
+    }
+
+    .category-card p {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+        margin-bottom: 0;
+        position: relative;
+        z-index: 1;
+        transition: all 0.4s ease;
+    }
+
+    .category-card:hover h5,
+    .category-card:hover p {
+        color: #fff;
+    }
+
+    /* ===== SHOP NOW BANNER ===== */
+    .shop-now-banner {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        padding: 60px 0;
+        border-top: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* ===== PRODUCTS ===== */
+    .product-card {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+        height: 100%;
+        border: 1px solid #f0f0f0;
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+        border-color: var(--primary-orange);
+    }
+
+    .product-card .product-image {
+        height: 220px;
+        background: #fafafa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .product-card .product-image .badge-sale {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: var(--primary-orange);
+        color: #fff;
+        padding: 4px 14px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .product-card .product-image .badge-new {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #00c851;
+        color: #fff;
+        padding: 4px 14px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .product-card .product-image i {
+        font-size: 5rem;
+        color: #ddd;
+    }
+
+    .product-card .product-body {
+        padding: 20px;
+    }
+
+    .product-card .product-body .product-rating {
+        color: #ffc107;
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+    }
+
+    .product-card .product-body .product-rating span {
+        color: var(--text-gray);
+        margin-left: 5px;
+    }
+
+    .product-card .product-body h5 {
+        font-weight: 700;
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+        color: var(--text-dark);
+    }
+
+    .product-card .product-body .product-price {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--primary-orange);
+    }
+
+    .product-card .product-body .product-price .old-price {
+        font-size: 0.95rem;
+        color: var(--text-gray);
+        text-decoration: line-through;
+        font-weight: 400;
+        margin-left: 10px;
+    }
+
+    .product-card .product-body .btn-add-cart {
+        width: 100%;
+        border-radius: 12px;
+        padding: 10px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+        background: #fff;
+        color: var(--text-gray);
+        padding: 70px 0 30px;
+        border-top: 1px solid #f0f0f0;
+    }
+
+    .footer h5 {
+        color: var(--text-dark);
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .footer a {
+        color: var(--text-gray);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    .footer a:hover {
+        color: var(--primary-orange);
+        transform: translateX(5px);
+    }
+
+    .footer a i {
+        margin-right: 5px;
+        font-size: 0.6rem;
+    }
+
+    .footer .social-links a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: #f8f9fa;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        margin-right: 10px;
+        transition: all 0.3s ease;
+        color: var(--text-gray);
+        border: 1px solid #eee;
+    }
+
+    .footer .social-links a:hover {
+        background: var(--primary-orange);
+        color: #fff;
+        transform: translateY(-3px);
+        border-color: var(--primary-orange);
+    }
+
+    .footer .footer-bottom {
+        border-top: 1px solid #f0f0f0;
+        padding-top: 25px;
+        margin-top: 40px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--text-gray);
+    }
+
+    .footer .footer-bottom span {
+        color: var(--primary-orange);
+        font-weight: 600;
+    }
+
+    .newsletter-input {
+        position: relative;
+    }
+
+    .newsletter-input input {
+        background: #f8f9fa;
+        border: 1px solid #eee;
+        padding: 12px 20px;
+        border-radius: 50px;
+        color: var(--text-dark);
+        width: 100%;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    .newsletter-input input::placeholder {
+        color: #999;
+    }
+
+    .newsletter-input input:focus {
+        border-color: var(--primary-orange);
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(252, 100, 2, 0.1);
+    }
+
+    .newsletter-input .btn-subscribe {
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        background: var(--primary-orange);
+        border: none;
+        padding: 8px 20px;
+        border-radius: 50px;
+        color: #fff;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .newsletter-input .btn-subscribe:hover {
+        background: #e05a00;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+        .hero-title {
+            font-size: 2.8rem;
+        }
+
+        .hero-stats {
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-image .floating-card {
+            display: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .top-bar {
+            display: none;
+        }
+
+        .hero-section {
+            padding: 50px 0;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+        }
+
+        .search-box {
+            flex-direction: column;
+            background: transparent;
+            padding: 0;
+            box-shadow: none;
+            border: none;
+        }
+
+        .search-box input {
+            background: #fff;
+            border-radius: 50px;
+            padding: 15px 25px;
+            margin-bottom: 10px;
+            width: 100%;
+            border: 1px solid #eee;
+        }
+
+        .search-box .btn-search {
+            width: 100%;
+            border-radius: 50px;
+        }
+
+        .hero-stats .stat-number {
+            font-size: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+        }
+
+        .shop-now-banner {
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer {
+            padding: 40px 0 20px;
+        }
+    }
+</style>
+
+<body>
+
+    <!-- ============================================================ -->
+    <!-- TOP BAR -->
+    <!-- ============================================================ -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="contact-info">
+                        <a href="#"><i class="fa fa-phone"></i> +1 234 567 890</a>
+                        <a href="#"><i class="fa fa-envelope"></i> support@trendmart.com</a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="top-links">
+                        <a href="#"><i class="fa fa-file-text"></i> Track Order</a>
+                        <a href="#"><i class="fa fa-heart"></i> Wishlist</a>
+                        <a href="#"><i class="fa fa-question-circle"></i> Help</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- NAVBAR -->
+    <!-- ============================================================ -->
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a href="#" class="navbar-brand">
+                    <img src="images/logo.png" height="55px" alt="Trend Mart Online">
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="fa fa-home"></i> Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-shopping-bag"></i> Products
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-info-circle"></i> About
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fa fa-envelope"></i> Contact
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="fa fa-user-circle"></i> Account
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-sign-in"></i> Login</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-user-plus"></i> Register</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-user"></i> My Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-shopping-bag"></i> My Orders</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item ms-lg-2">
+                            <a href="#" class="nav-link position-relative">
+                                <i class="fa fa-shopping-cart fs-4"></i>
+                                <span class="cart-badge">3</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- HERO SECTION -->
+    <!-- ============================================================ -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="hero-badge">
+                        <i class="fa fa-rocket"></i> Smart Shopping, Better Prices
+                    </div>
+                    <h1 class="hero-title">
+                        Discover <br>
+                        <span class="highlight">Trendy Products</span> <br>
+                        at Best Prices
+                    </h1>
+                    <p class="hero-subtitle">
+                        Shop the latest trends in fashion, electronics, home goods, and more.
+                        Quality products with fast delivery — all at unbeatable prices.
+                    </p>
+
+                    <!-- Search Box -->
+                    <div class="search-box">
+                        <input type="text" placeholder="What are you looking for?">
+                        <button class="btn-search">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Happy Customers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Products</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Satisfaction Rate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="hero-image">
+                        <img src="images/hero-shopping.png" alt="Shopping" class="img-fluid" style="max-height: 380px;">
+                        <div class="floating-card card-1">
+                            <i class="fa fa-truck"></i>
+                            <span>Free Delivery</span>
+                        </div>
+                        <div class="floating-card card-2">
+                            <i class="fa fa-shield"></i>
+                            <span>Secure Payment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CATEGORIES SECTION -->
+    <!-- ============================================================ -->
+    <section class="py-5" style="background: #fff;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-badge"><i class="fa fa-th-large"></i> Shop by Category</span>
+                <h2 class="section-title text-center">Browse Top Categories</h2>
+                <p class="section-subtitle">Find exactly what you need from our wide range of categories</p>
+            </div>
+            <div class="row g-4">
+                <!-- Category 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card">
+                        <div class="icon-wrapper">
+                            <i class="fa fa-laptop"></i>
+                        </div>
+                        <h5>Electronics</h5>
+                        <p>Gadgets & Accessories</p>
+                    </div>
+                </div>
+                <!-- Category 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card">
+                        <div class="icon-wrapper">
+                            <i class="fa fa-tshirt"></i>
+                        </div>
+                        <h5>Fashion</h5>
+                        <p>Clothing & Accessories</p>
+                    </div>
+                </div>
+                <!-- Category 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card">
+                        <div class="icon-wrapper">
+                            <i class="fa fa-cubes"></i>
+                        </div>
+                        <h5>Home & Living</h5>
+                        <p>Furniture & Decor</p>
+                    </div>
+                </div>
+                <!-- Category 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="category-card">
+                        <div class="icon-wrapper">
+                            <i class="fa fa-heartbeat"></i>
+                        </div>
+                        <h5>Health & Beauty</h5>
+                        <p>Wellness & Care</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SHOP NOW BANNER -->
+    <!-- ============================================================ -->
+    <section class="shop-now-banner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2 style="font-weight: 800; font-size: 2.5rem; color: var(--text-dark);">
+                        Ready to Start <span class="text-orange">Shopping</span>?
+                    </h2>
+                    <p style="color: var(--text-gray); font-size: 1.1rem; max-width: 550px;">
+                        Join thousands of satisfied customers. Get the best deals on quality products today!
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end text-center mt-3 mt-lg-0">
+                    <a href="#" class="btn btn-orange btn-lg rounded-pill px-5 py-3">
+                        <i class="fa fa-shopping-bag"></i> Shop Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PRODUCTS SECTION -->
+    <!-- ============================================================ -->
+    <section class="py-5" style="background: #fff;">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <span class="section-badge"><i class="fa fa-star"></i> Featured Products</span>
+                    <h2 class="section-title mb-0">Trending Now</h2>
+                </div>
+                <a href="#" class="btn btn-outline-orange rounded-pill px-4">
+                    View All <i class="fa fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+            <div class="row g-4">
+                <!-- Product 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="badge-sale">SALE</span>
+                            <i class="fa fa-laptop"></i>
+                        </div>
+                        <div class="product-body">
+                            <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <span>(24)</span>
+                            </div>
+                            <h5>Premium Laptop</h5>
+                            <div class="product-price">
+                                $899 <span class="old-price">$1,199</span>
+                            </div>
+                            <button class="btn btn-orange btn-add-cart mt-3">
+                                <i class="fa fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="badge-new">NEW</span>
+                            <i class="fa fa-tshirt"></i>
+                        </div>
+                        <div class="product-body">
+                            <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span>(18)</span>
+                            </div>
+                            <h5>Casual T-Shirt</h5>
+                            <div class="product-price">
+                                $29 <span class="old-price">$45</span>
+                            </div>
+                            <button class="btn btn-orange btn-add-cart mt-3">
+                                <i class="fa fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fa fa-headphones"></i>
+                        </div>
+                        <div class="product-body">
+                            <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <span>(32)</span>
+                            </div>
+                            <h5>Wireless Headphones</h5>
+                            <div class="product-price">
+                                $79 <span class="old-price">$120</span>
+                            </div>
+                            <button class="btn btn-orange btn-add-cart mt-3">
+                                <i class="fa fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <span class="badge-sale">SALE</span>
+                            <i class="fa fa-camera"></i>
+                        </div>
+                        <div class="product-body">
+                            <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <span>(15)</span>
+                            </div>
+                            <h5>Digital Camera</h5>
+                            <div class="product-price">
+                                $499 <span class="old-price">$650</span>
+                            </div>
+                            <button class="btn btn-orange btn-add-cart mt-3">
+                                <i class="fa fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="images/logo.png" height="50px" alt="Trend Mart Online" class="mb-3">
+                    <p style="max-width: 300px;">
+                        Smart Shopping, Better Prices. Your one-stop destination for quality products,
+                        fast delivery, and unbeatable prices.
+                    </p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a href="#"><i class="fa fa-chevron-right"></i> About Us</a><br>
+                    <a href="#"><i class="fa fa-chevron-right"></i> Contact</a><br>
+                    <a href="#"><i class="fa fa-chevron-right"></i> FAQ</a><br>
+                    <a href="#"><i class="fa fa-chevron-right"></i> Blog</a>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Policies</h5>
+                    <a href="#"><i class="fa fa-chevron-right"></i> Terms & Conditions</a><br>
+                    <a href="#"><i class="fa fa-chevron-right"></i> Privacy Policy</a><br>
+                    <a href="#"><i class="fa fa-chevron-right"></i> Refund Policy</a><br>
+                    <a href="#"><i class="fa fa-chevron-right"></i> Shipping Info</a>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Subscribe to Newsletter</h5>
+                    <p style="font-size: 0.9rem;">Get the latest updates on new products and special offers</p>
+                    <div class="newsletter-input">
+                        <input type="email" placeholder="Enter your email">
+                        <button class="btn-subscribe"><i class="fa fa-paper-plane"></i> Subscribe</button>
+                    </div>
+                    <div class="mt-3">
+                        <span style="font-size: 0.85rem; color: var(--text-gray);">
+                            <i class="fa fa-cc-visa fa-2x me-2"></i>
+                            <i class="fa fa-cc-mastercard fa-2x me-2"></i>
+                            <i class="fa fa-cc-paypal fa-2x me-2"></i>
+                            <i class="fa fa-cc-amex fa-2x"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="mb-0">
+                    © 2026 <span>Trend Mart Online</span>. All Rights Reserved.
+                    <span class="ms-3"><i class="fa fa-heart text-orange"></i> Made with love</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- BOOTSTRAP JS -->
+    <!-- ============================================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

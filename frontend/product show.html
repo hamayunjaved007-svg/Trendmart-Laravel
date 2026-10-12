@@ -1,0 +1,1355 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product Details - Trend Mart Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    * {
+        font-family: 'Inter', sans-serif;
+    }
+
+    :root {
+        --primary-orange: #FC6402;
+        --light-bg: #f8f9fa;
+        --text-dark: #1a1a2e;
+        --text-gray: #6c757d;
+    }
+
+    .bg-orange {
+        background-color: var(--primary-orange);
+    }
+
+    .text-orange {
+        color: var(--primary-orange);
+    }
+
+    .border-orange {
+        border-color: var(--primary-orange) !important;
+    }
+
+    .btn-orange {
+        background-color: var(--primary-orange);
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-orange:hover {
+        background-color: #e05a00;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(252, 100, 2, 0.3);
+    }
+
+    .btn-outline-orange {
+        border: 2px solid var(--primary-orange);
+        color: var(--primary-orange);
+        background: transparent;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-orange:hover {
+        background-color: var(--primary-orange);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(252, 100, 2, 0.2);
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+        color: var(--text-gray);
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    /* ===== PAGE HEADER ===== */
+    .page-header {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        padding: 30px 0 25px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .breadcrumb {
+        background: transparent;
+        padding: 0;
+        margin-bottom: 5px;
+    }
+
+    .breadcrumb-item a {
+        color: var(--text-gray);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .breadcrumb-item a:hover {
+        color: var(--primary-orange);
+    }
+
+    .breadcrumb-item.active {
+        color: var(--primary-orange);
+    }
+
+    /* ===== PRODUCT DETAILS ===== */
+    .product-gallery {
+        position: sticky;
+        top: 20px;
+    }
+
+    .product-gallery .main-image {
+        background: #fafafa;
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        border: 1px solid #f0f0f0;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .product-gallery .main-image .badge-sale {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: var(--primary-orange);
+        color: #fff;
+        padding: 6px 18px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        z-index: 2;
+    }
+
+    .product-gallery .main-image .badge-new {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: #00c851;
+        color: #fff;
+        padding: 6px 18px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        z-index: 2;
+    }
+
+    .product-gallery .main-image i {
+        font-size: 10rem;
+        color: #ddd;
+    }
+
+    .product-gallery .thumbnail-row {
+        display: flex;
+        gap: 12px;
+        margin-top: 15px;
+        flex-wrap: wrap;
+    }
+
+    .product-gallery .thumbnail-row .thumb {
+        width: 80px;
+        height: 80px;
+        background: #fafafa;
+        border-radius: 12px;
+        border: 2px solid #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 10px;
+    }
+
+    .product-gallery .thumbnail-row .thumb:hover {
+        border-color: var(--primary-orange);
+        transform: translateY(-3px);
+    }
+
+    .product-gallery .thumbnail-row .thumb.active {
+        border-color: var(--primary-orange);
+        box-shadow: 0 0 0 3px rgba(252, 100, 2, 0.15);
+    }
+
+    .product-gallery .thumbnail-row .thumb i {
+        font-size: 2rem;
+        color: #bbb;
+    }
+
+    /* ===== PRODUCT INFO ===== */
+    .product-info .product-name {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+    }
+
+    .product-info .product-rating {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .product-info .product-rating .stars {
+        color: #ffc107;
+        font-size: 1.1rem;
+    }
+
+    .product-info .product-rating .review-count {
+        color: var(--text-gray);
+        font-size: 0.95rem;
+    }
+
+    .product-info .product-rating .rating-badge {
+        background: #00c851;
+        color: #fff;
+        padding: 4px 12px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .product-info .product-price {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+        padding: 15px 0;
+        border-top: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .product-info .product-price .current-price {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: var(--primary-orange);
+    }
+
+    .product-info .product-price .old-price {
+        font-size: 1.3rem;
+        color: var(--text-gray);
+        text-decoration: line-through;
+    }
+
+    .product-info .product-price .discount-badge {
+        background: rgba(252, 100, 2, 0.1);
+        color: var(--primary-orange);
+        padding: 4px 14px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
+    .product-info .product-description {
+        color: var(--text-gray);
+        line-height: 1.8;
+        margin-bottom: 20px;
+        font-size: 1rem;
+    }
+
+    .product-info .product-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+        background: #f8f9fa;
+        padding: 15px 20px;
+        border-radius: 12px;
+    }
+
+    .product-info .product-meta .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+        color: var(--text-gray);
+    }
+
+    .product-info .product-meta .meta-item i {
+        color: var(--primary-orange);
+        width: 20px;
+    }
+
+    .product-info .product-meta .meta-item strong {
+        color: var(--text-dark);
+    }
+
+    .product-info .product-options {
+        margin-bottom: 20px;
+    }
+
+    .product-info .product-options label {
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .product-info .product-options .size-options {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .product-info .product-options .size-options .size-btn {
+        padding: 8px 20px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        background: #fff;
+        color: var(--text-dark);
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .product-info .product-options .size-options .size-btn:hover {
+        border-color: var(--primary-orange);
+        color: var(--primary-orange);
+    }
+
+    .product-info .product-options .size-options .size-btn.active {
+        border-color: var(--primary-orange);
+        background: var(--primary-orange);
+        color: #fff;
+    }
+
+    .product-info .product-options .color-options {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .product-info .product-options .color-options .color-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 3px solid #e0e0e0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    .product-info .product-options .color-options .color-btn:hover {
+        transform: scale(1.1);
+    }
+
+    .product-info .product-options .color-options .color-btn.active {
+        border-color: var(--primary-orange);
+        box-shadow: 0 0 0 3px rgba(252, 100, 2, 0.2);
+    }
+
+    .product-info .product-options .color-options .color-btn.color-black {
+        background: #1a1a2e;
+    }
+    .product-info .product-options .color-options .color-btn.color-white {
+        background: #fff;
+        border-color: #ccc;
+    }
+    .product-info .product-options .color-options .color-btn.color-blue {
+        background: #2196F3;
+    }
+    .product-info .product-options .color-options .color-btn.color-red {
+        background: #f44336;
+    }
+    .product-info .product-options .color-options .color-btn.color-gray {
+        background: #9E9E9E;
+    }
+
+    .product-info .quantity-selector {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .product-info .quantity-selector label {
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+        margin-bottom: 0;
+    }
+
+    .product-info .quantity-selector .qty-control {
+        display: flex;
+        align-items: center;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .product-info .quantity-selector .qty-control button {
+        background: #f8f9fa;
+        border: none;
+        padding: 8px 16px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        transition: all 0.3s ease;
+    }
+
+    .product-info .quantity-selector .qty-control button:hover {
+        background: var(--primary-orange);
+        color: #fff;
+    }
+
+    .product-info .quantity-selector .qty-control input {
+        width: 60px;
+        text-align: center;
+        border: none;
+        border-left: 2px solid #e0e0e0;
+        border-right: 2px solid #e0e0e0;
+        padding: 8px 0;
+        font-weight: 600;
+        font-size: 1rem;
+        outline: none;
+    }
+
+    .product-info .product-actions {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .product-info .product-actions .btn-add-cart {
+        padding: 15px 40px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .product-info .product-actions .btn-wishlist {
+        padding: 15px 25px;
+        border-radius: 12px;
+        border: 2px solid #e0e0e0;
+        background: #fff;
+        color: var(--text-gray);
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .product-info .product-actions .btn-wishlist:hover {
+        border-color: var(--primary-orange);
+        color: var(--primary-orange);
+        background: rgba(252, 100, 2, 0.05);
+    }
+
+    .product-info .product-actions .btn-wishlist i {
+        margin-right: 5px;
+    }
+
+    .product-info .stock-status {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #00c851;
+        font-weight: 600;
+    }
+
+    .product-info .stock-status i {
+        font-size: 1.2rem;
+    }
+
+    .product-info .stock-status.out-of-stock {
+        color: #f44336;
+    }
+
+    /* ===== TABS SECTION ===== */
+    .product-tabs {
+        margin-top: 50px;
+        border-top: 1px solid #f0f0f0;
+        padding-top: 40px;
+    }
+
+    .product-tabs .nav-tabs {
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .product-tabs .nav-tabs .nav-link {
+        border: none;
+        color: var(--text-gray);
+        font-weight: 600;
+        padding: 12px 25px;
+        margin-right: 5px;
+        border-radius: 8px 8px 0 0;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .product-tabs .nav-tabs .nav-link:hover {
+        color: var(--primary-orange);
+        background: rgba(252, 100, 2, 0.05);
+    }
+
+    .product-tabs .nav-tabs .nav-link.active {
+        color: var(--primary-orange);
+        background: transparent;
+        border-bottom: 3px solid var(--primary-orange);
+    }
+
+    .product-tabs .tab-content {
+        padding: 30px 0;
+    }
+
+    .product-tabs .tab-content p {
+        color: var(--text-gray);
+        line-height: 1.8;
+    }
+
+    .product-tabs .tab-content ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .product-tabs .tab-content ul li {
+        padding: 8px 0;
+        border-bottom: 1px solid #f5f5f5;
+        color: var(--text-gray);
+    }
+
+    .product-tabs .tab-content ul li i {
+        color: var(--primary-orange);
+        margin-right: 10px;
+    }
+
+    /* ===== REVIEWS ===== */
+    .review-item {
+        padding: 20px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .review-item:last-child {
+        border-bottom: none;
+    }
+
+    .review-item .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+    }
+
+    .review-item .review-header .reviewer {
+        font-weight: 600;
+        color: var(--text-dark);
+    }
+
+    .review-item .review-header .review-date {
+        color: var(--text-gray);
+        font-size: 0.85rem;
+    }
+
+    .review-item .review-stars {
+        color: #ffc107;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+
+    .review-item .review-text {
+        color: var(--text-gray);
+        line-height: 1.6;
+    }
+
+    .review-item .review-helpful {
+        margin-top: 8px;
+        display: flex;
+        gap: 15px;
+        font-size: 0.85rem;
+    }
+
+    .review-item .review-helpful a {
+        color: var(--text-gray);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .review-item .review-helpful a:hover {
+        color: var(--primary-orange);
+    }
+
+    .review-summary {
+        background: #f8f9fa;
+        padding: 25px;
+        border-radius: 16px;
+        margin-bottom: 30px;
+    }
+
+    .review-summary .big-rating {
+        font-size: 3rem;
+        font-weight: 900;
+        color: var(--text-dark);
+    }
+
+    .review-summary .big-rating span {
+        color: var(--text-gray);
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .review-summary .rating-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 5px;
+    }
+
+    .review-summary .rating-bar .bar-label {
+        font-size: 0.85rem;
+        color: var(--text-gray);
+        min-width: 40px;
+    }
+
+    .review-summary .rating-bar .bar-track {
+        flex: 1;
+        height: 8px;
+        background: #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .review-summary .rating-bar .bar-track .bar-fill {
+        height: 100%;
+        background: var(--primary-orange);
+        border-radius: 4px;
+    }
+
+    .review-summary .rating-bar .bar-count {
+        font-size: 0.85rem;
+        color: var(--text-gray);
+        min-width: 30px;
+    }
+
+    /* ===== RELATED PRODUCTS ===== */
+    .related-products {
+        margin-top: 60px;
+        border-top: 1px solid #f0f0f0;
+        padding-top: 40px;
+    }
+
+    .related-products .section-title {
+        font-size: 1.8rem;
+    }
+
+    .product-card {
+        background: #fff;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+        height: 100%;
+        border: 1px solid #f0f0f0;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+        border-color: var(--primary-orange);
+    }
+
+    .product-card .product-image {
+        height: 180px;
+        background: #fafafa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .product-card .product-image i {
+        font-size: 4rem;
+        color: #ddd;
+    }
+
+    .product-card .product-body {
+        padding: 15px;
+    }
+
+    .product-card .product-body h6 {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--text-dark);
+        margin-bottom: 5px;
+    }
+
+    .product-card .product-body .product-price {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: var(--primary-orange);
+    }
+
+    .product-card .product-body .product-price .old-price {
+        font-size: 0.85rem;
+        color: var(--text-gray);
+        text-decoration: line-through;
+        font-weight: 400;
+        margin-left: 8px;
+    }
+
+    .product-card .product-body .product-rating {
+        color: #ffc107;
+        font-size: 0.8rem;
+        margin-bottom: 5px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+        .product-gallery {
+            position: relative;
+            top: 0;
+            margin-bottom: 30px;
+        }
+        .product-info .product-name {
+            font-size: 1.8rem;
+        }
+        .product-info .product-price .current-price {
+            font-size: 2rem;
+        }
+        .product-info .product-meta {
+            grid-template-columns: 1fr;
+        }
+        .section-title {
+            font-size: 1.8rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .page-header {
+            padding: 20px 0 15px;
+        }
+        .product-info .product-name {
+            font-size: 1.5rem;
+        }
+        .product-info .product-price .current-price {
+            font-size: 1.8rem;
+        }
+        .product-info .product-actions .btn-add-cart {
+            padding: 12px 25px;
+            font-size: 1rem;
+        }
+        .product-gallery .main-image {
+            min-height: 250px;
+            padding: 20px;
+        }
+        .product-gallery .main-image i {
+            font-size: 6rem;
+        }
+        .product-gallery .thumbnail-row .thumb {
+            width: 60px;
+            height: 60px;
+        }
+        .product-gallery .thumbnail-row .thumb i {
+            font-size: 1.5rem;
+        }
+        .product-info .product-meta {
+            grid-template-columns: 1fr;
+        }
+        .product-tabs .nav-tabs .nav-link {
+            padding: 10px 15px;
+            font-size: 0.9rem;
+        }
+        .review-summary {
+            padding: 15px;
+        }
+        .related-products .section-title {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+<body>
+
+    <!-- ============================================================ -->
+    <!-- PAGE HEADER WITH BREADCRUMB -->
+    <!-- ============================================================ -->
+    <section class="page-header">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Products</a></li>
+                    <li class="breadcrumb-item"><a href="#">Electronics</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Premium Laptop</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PRODUCT DETAILS SECTION -->
+    <!-- ============================================================ -->
+    <section class="py-4" style="background: #fff;">
+        <div class="container">
+
+            <div class="row">
+                <!-- ===== PRODUCT GALLERY ===== -->
+                <div class="col-lg-6">
+                    <div class="product-gallery">
+                        <div class="main-image">
+                            <span class="badge-sale">SALE</span>
+                            <span class="badge-new">NEW</span>
+                            <i class="fa fa-laptop"></i>
+                        </div>
+                        <div class="thumbnail-row">
+                            <div class="thumb active">
+                                <i class="fa fa-laptop"></i>
+                            </div>
+                            <div class="thumb">
+                                <i class="fa fa-laptop"></i>
+                            </div>
+                            <div class="thumb">
+                                <i class="fa fa-laptop"></i>
+                            </div>
+                            <div class="thumb">
+                                <i class="fa fa-laptop"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== PRODUCT INFO ===== -->
+                <div class="col-lg-6">
+                    <div class="product-info">
+
+                        <h1 class="product-name">Premium Laptop Pro</h1>
+
+                        <div class="product-rating">
+                            <span class="stars">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </span>
+                            <span class="rating-badge">4.5</span>
+                            <span class="review-count">(24 Reviews)</span>
+                        </div>
+
+                        <div class="product-price">
+                            <span class="current-price">$899.00</span>
+                            <span class="old-price">$1,199.00</span>
+                            <span class="discount-badge">Save $300</span>
+                        </div>
+
+                        <p class="product-description">
+                            Experience the ultimate performance with our Premium Laptop Pro. 
+                            Featuring the latest Intel Core i7 processor, 16GB RAM, and 512GB SSD. 
+                            Perfect for professionals, creators, and gamers alike.
+                        </p>
+
+                        <div class="product-meta">
+                            <div class="meta-item">
+                                <i class="fa fa-tag"></i>
+                                <span><strong>Category:</strong> Electronics</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fa fa-barcode"></i>
+                                <span><strong>SKU:</strong> LT-2024-001</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fa fa-truck"></i>
+                                <span><strong>Shipping:</strong> Free Delivery</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fa fa-shield"></i>
+                                <span><strong>Warranty:</strong> 2 Years</span>
+                            </div>
+                        </div>
+
+                        <!-- Size Options -->
+                        <div class="product-options">
+                            <label><i class="fa fa-arrows-h"></i> Size</label>
+                            <div class="size-options">
+                                <span class="size-btn active">14"</span>
+                                <span class="size-btn">15.6"</span>
+                                <span class="size-btn">16"</span>
+                                <span class="size-btn">17.3"</span>
+                            </div>
+                        </div>
+
+                        <!-- Color Options -->
+                        <div class="product-options">
+                            <label><i class="fa fa-paint-brush"></i> Color</label>
+                            <div class="color-options">
+                                <span class="color-btn color-black active" title="Black"></span>
+                                <span class="color-btn color-gray" title="Gray"></span>
+                                <span class="color-btn color-white" title="White"></span>
+                                <span class="color-btn color-blue" title="Blue"></span>
+                                <span class="color-btn color-red" title="Red"></span>
+                            </div>
+                        </div>
+
+                        <!-- Quantity -->
+                        <div class="quantity-selector">
+                            <label><i class="fa fa-cubes"></i> Quantity</label>
+                            <div class="qty-control">
+                                <button class="qty-minus"><i class="fa fa-minus"></i></button>
+                                <input type="text" value="1" readonly>
+                                <button class="qty-plus"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="product-actions">
+                            <button class="btn btn-orange btn-add-cart">
+                                <i class="fa fa-shopping-cart"></i> Add to Cart
+                            </button>
+                            <button class="btn-wishlist">
+                                <i class="fa fa-heart-o"></i> Wishlist
+                            </button>
+                        </div>
+
+                        <div class="stock-status">
+                            <i class="fa fa-check-circle"></i>
+                            <span>In Stock - Ready to Ship</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PRODUCT TABS SECTION -->
+    <!-- ============================================================ -->
+    <section class="product-tabs">
+        <div class="container">
+
+            <ul class="nav nav-tabs" id="productTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="description-tab" data-bs-toggle="tab" 
+                            data-bs-target="#description" type="button" role="tab">
+                        <i class="fa fa-file-text"></i> Description
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="specifications-tab" data-bs-toggle="tab" 
+                            data-bs-target="#specifications" type="button" role="tab">
+                        <i class="fa fa-list"></i> Specifications
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" 
+                            data-bs-target="#reviews" type="button" role="tab">
+                        <i class="fa fa-comments"></i> Reviews (24)
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" 
+                            data-bs-target="#shipping" type="button" role="tab">
+                        <i class="fa fa-truck"></i> Shipping Info
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="productTabsContent">
+
+                <!-- Description Tab -->
+                <div class="tab-pane fade show active" id="description" role="tabpanel">
+                    <h5>Product Description</h5>
+                    <p>
+                        The Premium Laptop Pro is designed for those who demand the best. 
+                        With its sleek design, powerful performance, and stunning display, 
+                        it's perfect for both work and play.
+                    </p>
+                    <p>
+                        <strong>Key Features:</strong>
+                    </p>
+                    <ul>
+                        <li><i class="fa fa-check-circle"></i> Intel Core i7-13700H Processor</li>
+                        <li><i class="fa fa-check-circle"></i> 16GB DDR5 RAM</li>
+                        <li><i class="fa fa-check-circle"></i> 512GB NVMe SSD</li>
+                        <li><i class="fa fa-check-circle"></i> 14" 4K OLED Display</li>
+                        <li><i class="fa fa-check-circle"></i> NVIDIA GeForce RTX 4060</li>
+                        <li><i class="fa fa-check-circle"></i> Up to 12 Hours Battery Life</li>
+                        <li><i class="fa fa-check-circle"></i> Windows 11 Pro</li>
+                    </ul>
+                </div>
+
+                <!-- Specifications Tab -->
+                <div class="tab-pane fade" id="specifications" role="tabpanel">
+                    <h5>Technical Specifications</h5>
+                    <ul>
+                        <li><i class="fa fa-microchip"></i> <strong>Processor:</strong> Intel Core i7-13700H (14 Cores, 20 Threads)</li>
+                        <li><i class="fa fa-database"></i> <strong>RAM:</strong> 16GB DDR5-5200MHz</li>
+                        <li><i class="fa fa-hdd-o"></i> <strong>Storage:</strong> 512GB NVMe M.2 SSD</li>
+                        <li><i class="fa fa-desktop"></i> <strong>Display:</strong> 14" 4K OLED, 120Hz Refresh Rate</li>
+                        <li><i class="fa fa-tv"></i> <strong>Graphics:</strong> NVIDIA GeForce RTX 4060 (8GB GDDR6)</li>
+                        <li><i class="fa fa-battery-full"></i> <strong>Battery:</strong> 85Wh, Up to 12 Hours</li>
+                        <li><i class="fa fa-wifi"></i> <strong>Connectivity:</strong> Wi-Fi 6E, Bluetooth 5.3</li>
+                        <li><i class="fa fa-usb"></i> <strong>Ports:</strong> 2x USB-C Thunderbolt 4, 1x USB-A 3.2, HDMI 2.1</li>
+                        <li><i class="fa fa-camera"></i> <strong>Webcam:</strong> 1080p Full HD with Privacy Shutter</li>
+                        <li><i class="fa fa-weight"></i> <strong>Weight:</strong> 1.35 kg (2.98 lbs)</li>
+                    </ul>
+                </div>
+
+                <!-- Reviews Tab -->
+                <div class="tab-pane fade" id="reviews" role="tabpanel">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="review-summary">
+                                <div class="big-rating">
+                                    4.5 <span>/ 5.0</span>
+                                </div>
+                                <p style="color: var(--text-gray);">Based on 24 reviews</p>
+                                <div class="rating-bar">
+                                    <span class="bar-label">5 ★</span>
+                                    <div class="bar-track">
+                                        <div class="bar-fill" style="width: 70%;"></div>
+                                    </div>
+                                    <span class="bar-count">17</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span class="bar-label">4 ★</span>
+                                    <div class="bar-track">
+                                        <div class="bar-fill" style="width: 20%;"></div>
+                                    </div>
+                                    <span class="bar-count">5</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span class="bar-label">3 ★</span>
+                                    <div class="bar-track">
+                                        <div class="bar-fill" style="width: 8%;"></div>
+                                    </div>
+                                    <span class="bar-count">2</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span class="bar-label">2 ★</span>
+                                    <div class="bar-track">
+                                        <div class="bar-fill" style="width: 2%;"></div>
+                                    </div>
+                                    <span class="bar-count">0</span>
+                                </div>
+                                <div class="rating-bar">
+                                    <span class="bar-label">1 ★</span>
+                                    <div class="bar-track">
+                                        <div class="bar-fill" style="width: 0%;"></div>
+                                    </div>
+                                    <span class="bar-count">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <!-- Review 1 -->
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <span class="reviewer">John Doe</span>
+                                    <span class="review-date"><i class="fa fa-calendar"></i> March 15, 2026</span>
+                                </div>
+                                <div class="review-stars">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <p class="review-text">
+                                    Absolutely love this laptop! The performance is incredible and the display is stunning. 
+                                    Battery life is amazing too. Highly recommend!
+                                </p>
+                                <div class="review-helpful">
+                                    <span>Was this helpful?</span>
+                                    <a href="#"><i class="fa fa-thumbs-up"></i> Yes (12)</a>
+                                    <a href="#"><i class="fa fa-thumbs-down"></i> No (0)</a>
+                                </div>
+                            </div>
+
+                            <!-- Review 2 -->
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <span class="reviewer">Sarah Johnson</span>
+                                    <span class="review-date"><i class="fa fa-calendar"></i> March 10, 2026</span>
+                                </div>
+                                <div class="review-stars">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </div>
+                                <p class="review-text">
+                                    Great laptop for work and gaming. The 4K OLED display is breathtaking. 
+                                    Only minor complaint is the webcam quality could be better.
+                                </p>
+                                <div class="review-helpful">
+                                    <span>Was this helpful?</span>
+                                    <a href="#"><i class="fa fa-thumbs-up"></i> Yes (8)</a>
+                                    <a href="#"><i class="fa fa-thumbs-down"></i> No (1)</a>
+                                </div>
+                            </div>
+
+                            <!-- Review 3 -->
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <span class="reviewer">Mike Chen</span>
+                                    <span class="review-date"><i class="fa fa-calendar"></i> March 5, 2026</span>
+                                </div>
+                                <div class="review-stars">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </div>
+                                <p class="review-text">
+                                    Solid performance and build quality. The RTX 4060 handles all my games smoothly. 
+                                    Good value for the price.
+                                </p>
+                                <div class="review-helpful">
+                                    <span>Was this helpful?</span>
+                                    <a href="#"><i class="fa fa-thumbs-up"></i> Yes (5)</a>
+                                    <a href="#"><i class="fa fa-thumbs-down"></i> No (0)</a>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-3">
+                                <button class="btn btn-outline-orange rounded-pill px-4">
+                                    <i class="fa fa-comment"></i> Write a Review
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping Tab -->
+                <div class="tab-pane fade" id="shipping" role="tabpanel">
+                    <h5>Shipping Information</h5>
+                    <ul>
+                        <li><i class="fa fa-check-circle text-orange"></i> <strong>Free Shipping:</strong> On all orders over $50</li>
+                        <li><i class="fa fa-check-circle text-orange"></i> <strong>Delivery Time:</strong> 3-5 Business Days</li>
+                        <li><i class="fa fa-check-circle text-orange"></i> <strong>Express Shipping:</strong> 1-2 Business Days ($15)</li>
+                        <li><i class="fa fa-check-circle text-orange"></i> <strong>International Shipping:</strong> 7-14 Business Days</li>
+                        <li><i class="fa fa-check-circle text-orange"></i> <strong>Order Tracking:</strong> Available via email</li>
+                        <li><i class="fa fa-check-circle text-orange"></i> <strong>Returns:</strong> 30-Day Money-Back Guarantee</li>
+                    </ul>
+                    <p style="color: var(--text-gray); margin-top: 15px;">
+                        For more information about shipping and delivery, please visit our 
+                        <a href="#" class="text-orange">Shipping Policy</a> page.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- RELATED PRODUCTS -->
+    <!-- ============================================================ -->
+    <section class="related-products">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <span class="text-orange" style="font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600;">
+                        <i class="fa fa-link"></i> You May Also Like
+                    </span>
+                    <h2 class="section-title">Related Products</h2>
+                </div>
+                <a href="#" class="btn btn-outline-orange rounded-pill px-4">
+                    View All <i class="fa fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Related Product 1 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fa fa-headphones"></i>
+                        </div>
+                        <div class="product-body">
+                            <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                            <h6>Wireless Headphones</h6>
+                            <div class="product-price">
+                                $79 <span class="old-price">$120</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Product 2 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+                        <div class="product-body">
+                            <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <h6>Smart Watch Pro</h6>
+                            <div class="product-price">
+                                $149 <span class="old-price">$199</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Product 3 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fa fa-camera"></i>
+                        </div>
+                        <div class="product-body">
+                            <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h6>Digital Camera</h6>
+                            <div class="product-price">
+                                $499 <span class="old-price">$650</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Product 4 -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <i class="fa fa-shopping-bag"></i>
+                        </div>
+                        <div class="product-body">
+                            <div class="product-rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                            <h6>Laptop Backpack</h6>
+                            <div class="product-price">
+                                $39 <span class="old-price">$55</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- BOOTSTRAP JS -->
+    <!-- ============================================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <script>
+        // ===== QUANTITY SELECTOR =====
+        document.querySelectorAll('.qty-control').forEach(function(control) {
+            const minus = control.querySelector('.qty-minus');
+            const plus = control.querySelector('.qty-plus');
+            const input = control.querySelector('input');
+
+            if (minus) {
+                minus.addEventListener('click', function() {
+                    let value = parseInt(input.value);
+                    if (value > 1) {
+                        input.value = value - 1;
+                    }
+                });
+            }
+
+            if (plus) {
+                plus.addEventListener('click', function() {
+                    let value = parseInt(input.value);
+                    if (value < 99) {
+                        input.value = value + 1;
+                    }
+                });
+            }
+        });
+
+        // ===== SIZE OPTIONS =====
+        document.querySelectorAll('.size-options .size-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.size-options .size-btn').forEach(function(b) {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // ===== COLOR OPTIONS =====
+        document.querySelectorAll('.color-options .color-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.color-options .color-btn').forEach(function(b) {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // ===== THUMBNAIL SWITCHER =====
+        document.querySelectorAll('.thumbnail-row .thumb').forEach(function(thumb) {
+            thumb.addEventListener('click', function() {
+                document.querySelectorAll('.thumbnail-row .thumb').forEach(function(t) {
+                    t.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // ===== WISHLIST BUTTON =====
+        document.querySelectorAll('.btn-wishlist').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-heart-o')) {
+                    icon.classList.remove('fa-heart-o');
+                    icon.classList.add('fa-heart');
+                    this.style.color = '#FC6402';
+                    this.style.borderColor = '#FC6402';
+                } else {
+                    icon.classList.remove('fa-heart');
+                    icon.classList.add('fa-heart-o');
+                    this.style.color = '';
+                    this.style.borderColor = '';
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

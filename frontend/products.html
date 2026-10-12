@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Products - Trend Mart Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    * {
+        font-family: 'Inter', sans-serif;
+    }
+
+    :root {
+        --primary-orange: #FC6402;
+        --light-bg: #f8f9fa;
+        --text-dark: #1a1a2e;
+        --text-gray: #6c757d;
+    }
+
+    .bg-orange {
+        background-color: var(--primary-orange);
+    }
+
+    .text-orange {
+        color: var(--primary-orange);
+    }
+
+    .border-orange {
+        border-color: var(--primary-orange) !important;
+    }
+
+    .btn-orange {
+        background-color: var(--primary-orange);
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-orange:hover {
+        background-color: #e05a00;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(252, 100, 2, 0.3);
+    }
+
+    .btn-outline-orange {
+        border: 2px solid var(--primary-orange);
+        color: var(--primary-orange);
+        background: transparent;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-orange:hover {
+        background-color: var(--primary-orange);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(252, 100, 2, 0.2);
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+        color: var(--text-gray);
+        font-size: 1rem;
+        font-weight: 300;
+    }
+
+    /* ===== PAGE HEADER ===== */
+    .page-header {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        padding: 50px 0 40px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .breadcrumb {
+        background: transparent;
+        padding: 0;
+        margin-bottom: 5px;
+    }
+
+    .breadcrumb-item a {
+        color: var(--text-gray);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .breadcrumb-item a:hover {
+        color: var(--primary-orange);
+    }
+
+    .breadcrumb-item.active {
+        color: var(--primary-orange);
+    }
+
+    /* ===== SIDEBAR FILTERS ===== */
+    .filter-sidebar {
+        background: #fff;
+        border-radius: 16px;
+        padding: 25px;
+        border: 1px solid #f0f0f0;
+        position: sticky;
+        top: 20px;
+    }
+
+    .filter-sidebar .filter-title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--primary-orange);
+    }
+
+    .filter-sidebar .filter-section {
+        margin-bottom: 25px;
+    }
+
+    .filter-sidebar .filter-section h6 {
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 12px;
+        font-size: 0.95rem;
+    }
+
+    .filter-sidebar .form-check {
+        margin-bottom: 8px;
+    }
+
+    .filter-sidebar .form-check-label {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .filter-sidebar .form-check-label:hover {
+        color: var(--primary-orange);
+    }
+
+    .filter-sidebar .form-check-input:checked {
+        background-color: var(--primary-orange);
+        border-color: var(--primary-orange);
+    }
+
+    .filter-sidebar .price-range {
+        padding: 0 5px;
+    }
+
+    .filter-sidebar .price-range input[type="range"] {
+        width: 100%;
+        height: 5px;
+        background: #e0e0e0;
+        border-radius: 5px;
+        outline: none;
+        -webkit-appearance: none;
+    }
+
+    .filter-sidebar .price-range input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        background: var(--primary-orange);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .filter-sidebar .price-range .price-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.85rem;
+        color: var(--text-gray);
+        margin-top: 5px;
+    }
+
+    .filter-sidebar .btn-apply-filter {
+        width: 100%;
+        border-radius: 12px;
+        padding: 12px;
+        font-weight: 600;
+    }
+
+    /* ===== PRODUCT GRID ===== */
+    .product-card {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+        height: 100%;
+        border: 1px solid #f0f0f0;
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+        border-color: var(--primary-orange);
+    }
+
+    .product-card .product-image {
+        height: 220px;
+        background: #fafafa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .product-card .product-image .badge-sale {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: var(--primary-orange);
+        color: #fff;
+        padding: 4px 14px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .product-card .product-image .badge-new {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #00c851;
+        color: #fff;
+        padding: 4px 14px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    .product-card .product-image .badge-out-of-stock {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        z-index: 2;
+    }
+
+    .product-card .product-image .wishlist-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: #fff;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        color: #999;
+    }
+
+    .product-card .product-image .wishlist-btn:hover {
+        background: var(--primary-orange);
+        color: #fff;
+        transform: scale(1.1);
+    }
+
+    .product-card .product-image i {
+        font-size: 5rem;
+        color: #ddd;
+    }
+
+    .product-card .product-body {
+        padding: 20px;
+    }
+
+    .product-card .product-body .product-rating {
+        color: #ffc107;
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+    }
+
+    .product-card .product-body .product-rating span {
+        color: var(--text-gray);
+        margin-left: 5px;
+    }
+
+    .product-card .product-body h5 {
+        font-weight: 700;
+        font-size: 1.05rem;
+        margin-bottom: 5px;
+        color: var(--text-dark);
+    }
+
+    .product-card .product-body .product-category {
+        font-size: 0.8rem;
+        color: var(--text-gray);
+        margin-bottom: 8px;
+    }
+
+    .product-card .product-body .product-category i {
+        color: var(--primary-orange);
+        margin-right: 4px;
+    }
+
+    .product-card .product-body .product-price {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: var(--primary-orange);
+    }
+
+    .product-card .product-body .product-price .old-price {
+        font-size: 0.95rem;
+        color: var(--text-gray);
+        text-decoration: line-through;
+        font-weight: 400;
+        margin-left: 10px;
+    }
+
+    .product-card .product-body .btn-add-cart {
+        width: 100%;
+        border-radius: 12px;
+        padding: 10px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .product-card .product-body .btn-outline-orange {
+        border-width: 2px;
+    }
+
+    /* ===== TOOLBAR ===== */
+    .toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 30px;
+        padding: 15px 20px;
+        background: #fff;
+        border-radius: 12px;
+        border: 1px solid #f0f0f0;
+    }
+
+    .toolbar .toolbar-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .toolbar .toolbar-left span {
+        color: var(--text-gray);
+        font-size: 0.95rem;
+    }
+
+    .toolbar .toolbar-right {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .toolbar .toolbar-right .form-select {
+        border-radius: 8px;
+        border-color: #e0e0e0;
+        font-size: 0.9rem;
+        padding: 8px 35px 8px 15px;
+        cursor: pointer;
+    }
+
+    .toolbar .toolbar-right .view-toggle {
+        display: flex;
+        gap: 5px;
+    }
+
+    .toolbar .toolbar-right .view-toggle button {
+        border: 1px solid #e0e0e0;
+        background: #fff;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        color: var(--text-gray);
+    }
+
+    .toolbar .toolbar-right .view-toggle button.active {
+        background: var(--primary-orange);
+        color: #fff;
+        border-color: var(--primary-orange);
+    }
+
+    .toolbar .toolbar-right .view-toggle button:hover {
+        border-color: var(--primary-orange);
+    }
+
+    /* ===== PAGINATION ===== */
+    .pagination-custom {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 40px;
+    }
+
+    .pagination-custom .page-link {
+        border: 1px solid #e0e0e0;
+        color: var(--text-dark);
+        border-radius: 8px;
+        padding: 10px 16px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .pagination-custom .page-link:hover {
+        background: var(--primary-orange);
+        color: #fff;
+        border-color: var(--primary-orange);
+    }
+
+    .pagination-custom .page-item.active .page-link {
+        background: var(--primary-orange);
+        color: #fff;
+        border-color: var(--primary-orange);
+    }
+
+    .pagination-custom .page-item.disabled .page-link {
+        color: #ccc;
+        cursor: not-allowed;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+        .filter-sidebar {
+            position: relative;
+            top: 0;
+            margin-bottom: 30px;
+        }
+        .section-title {
+            font-size: 1.8rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .toolbar {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .toolbar .toolbar-left {
+            justify-content: center;
+        }
+        .toolbar .toolbar-right {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .page-header {
+            padding: 30px 0 20px;
+        }
+        .section-title {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+<body>
+
+    <!-- ============================================================ -->
+    <!-- PAGE HEADER WITH BREADCRUMB -->
+    <!-- ============================================================ -->
+    <section class="page-header">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                </ol>
+            </nav>
+            <h1 class="section-title">Our Products</h1>
+            <p class="section-subtitle">Discover our wide range of quality products at the best prices</p>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PRODUCTS MAIN SECTION -->
+    <!-- ============================================================ -->
+    <section class="py-4" style="background: #fff;">
+        <div class="container">
+
+            <div class="row">
+                <!-- ===== SIDEBAR FILTERS ===== -->
+                <div class="col-lg-3">
+                    <div class="filter-sidebar">
+                        <h5 class="filter-title">
+                            <i class="fa fa-sliders"></i> Filters
+                        </h5>
+
+                        <!-- Category Filter -->
+                        <div class="filter-section">
+                            <h6><i class="fa fa-th-large"></i> Categories</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cat1" checked>
+                                <label class="form-check-label" for="cat1">Electronics (45)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cat2">
+                                <label class="form-check-label" for="cat2">Fashion (32)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cat3">
+                                <label class="form-check-label" for="cat3">Home & Living (28)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cat4">
+                                <label class="form-check-label" for="cat4">Health & Beauty (19)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cat5">
+                                <label class="form-check-label" for="cat5">Sports & Outdoors (15)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="cat6">
+                                <label class="form-check-label" for="cat6">Books & Media (22)</label>
+                            </div>
+                        </div>
+
+                        <!-- Price Range Filter -->
+                        <div class="filter-section">
+                            <h6><i class="fa fa-usd"></i> Price Range</h6>
+                            <div class="price-range">
+                                <input type="range" min="0" max="1000" value="500">
+                                <div class="price-labels">
+                                    <span>$0</span>
+                                    <span>$500</span>
+                                    <span>$1000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rating Filter -->
+                        <div class="filter-section">
+                            <h6><i class="fa fa-star"></i> Rating</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="rating" id="rating5" checked>
+                                <label class="form-check-label" for="rating5">
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i> & Up
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="rating" id="rating4">
+                                <label class="form-check-label" for="rating4">
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star-o text-warning"></i> & Up
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="rating" id="rating3">
+                                <label class="form-check-label" for="rating3">
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star-o text-warning"></i>
+                                    <i class="fa fa-star-o text-warning"></i> & Up
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Availability -->
+                        <div class="filter-section">
+                            <h6><i class="fa fa-check-circle"></i> Availability</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="inStock" checked>
+                                <label class="form-check-label" for="inStock">In Stock (68)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="outOfStock">
+                                <label class="form-check-label" for="outOfStock">Out of Stock (12)</label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-orange btn-apply-filter">
+                            <i class="fa fa-filter"></i> Apply Filters
+                        </button>
+                        <button class="btn btn-outline-secondary w-100 mt-2" style="border-radius: 12px; padding: 10px;">
+                            <i class="fa fa-undo"></i> Reset All
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ===== PRODUCT GRID ===== -->
+                <div class="col-lg-9">
+
+                    <!-- Toolbar -->
+                    <div class="toolbar">
+                        <div class="toolbar-left">
+                            <span><strong>Showing 1-8</strong> of 68 products</span>
+                        </div>
+                        <div class="toolbar-right">
+                            <select class="form-select">
+                                <option value="newest">Sort by: Newest</option>
+                                <option value="popular">Sort by: Popular</option>
+                                <option value="price-low">Sort by: Price: Low to High</option>
+                                <option value="price-high">Sort by: Price: High to Low</option>
+                                <option value="rating">Sort by: Rating</option>
+                            </select>
+                            <div class="view-toggle">
+                                <button class="active" title="Grid View">
+                                    <i class="fa fa-th"></i>
+                                </button>
+                                <button title="List View">
+                                    <i class="fa fa-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="row g-4">
+
+                        <!-- Product 1 -->
+                        <div class="col-md-6 col-xl-4">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <span class="badge-sale">SALE</span>
+                                    <button class="wishlist-btn"><i class="fa fa-heart-o"></i></button>
+                                    <i class="fa fa-laptop"></i>
+                                </div>
+                                <div class="product-body">
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                        <span>(24)</span>
+                                    </div>
+                                    <h5>Premium Laptop</h5>
+                                    <div class="product-category">
+                                        <i class="fa fa-tag"></i> Electronics
+                                    </div>
+                                    <div class="product-price">
+                                        $899 <span class="old-price">$1,199</span>
+                                    </div>
+                                    <button class="btn btn-orange btn-add-cart mt-2">
+                                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="col-md-6 col-xl-4">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <span class="badge-new">NEW</span>
+                                    <button class="wishlist-btn"><i class="fa fa-heart-o"></i></button>
+                                    <i class="fa fa-tshirt"></i>
+                                </div>
+                                <div class="product-body">
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <span>(18)</span>
+                                    </div>
+                                    <h5>Casual T-Shirt</h5>
+                                    <div class="product-category">
+                                        <i class="fa fa-tag"></i> Fashion
+                                    </div>
+                                    <div class="product-price">
+                                        $29 <span class="old-price">$45</span>
+                                    </div>
+                                    <button class="btn btn-orange btn-add-cart mt-2">
+                                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="col-md-6 col-xl-4">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <button class="wishlist-btn"><i class="fa fa-heart-o"></i></button>
+                                    <i class="fa fa-headphones"></i>
+                                </div>
+                                <div class="product-body">
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <span>(32)</span>
+                                    </div>
+                                    <h5>Wireless Headphones</h5>
+                                    <div class="product-category">
+                                        <i class="fa fa-tag"></i> Electronics
+                                    </div>
+                                    <div class="product-price">
+                                        $79 <span class="old-price">$120</span>
+                                    </div>
+                                    <button class="btn btn-orange btn-add-cart mt-2">
+                                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="col-md-6 col-xl-4">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <span class="badge-sale">SALE</span>
+                                    <button class="wishlist-btn"><i class="fa fa-heart-o"></i></button>
+                                    <i class="fa fa-camera"></i>
+                                </div>
+                                <div class="product-body">
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                        <span>(15)</span>
+                                    </div>
+                                    <h5>Digital Camera</h5>
+                                    <div class="product-category">
+                                        <i class="fa fa-tag"></i> Electronics
+                                    </div>
+                                    <div class="product-price">
+                                        $499 <span class="old-price">$650</span>
+                                    </div>
+                                    <button class="btn btn-orange btn-add-cart mt-2">
+                                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 5 -->
+                        <div class="col-md-6 col-xl-4">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <span class="badge-out-of-stock">Out of Stock</span>
+                                    <button class="wishlist-btn"><i class="fa fa-heart-o"></i></button>
+                                    <i class="fa fa-shoe-print"></i>
+                                </div>
+                                <div class="product-body">
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <span>(9)</span>
+                                    </div>
+                                    <h5>Running Shoes</h5>
+                                    <div class="product-category">
+                                        <i class="fa fa-tag"></i> Sports & Outdoors
+                                    </div>
+                                    <div class="product-price">
+                                        $89 <span class="old-price">$110</span>
+                                    </div>
+                                    <button class="btn btn-secondary btn-add-cart mt-2" disabled>
+                                        <i class="fa fa-times-circle"></i> Out of Stock
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 6 -->
+                        <div class="col-md-6 col-xl-4">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <span class="badge-new">NEW</span>
+                                    <button class="wishlist-btn"><i class="fa fa-heart-o"></i></button>
+                                    <i class="fa fa-book"></i>
+                                </div>
+                                <div class="product-body">
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <span>(42)</span>
+                                    </div>
+                                    <h5>Bestseller Novel</h5>
+                                    <div class="product-category">
+                                        <i class="fa fa-tag"></i> Books & Media
+                                    </div>
+                                    <div class="product-price">
+                                        $19 <span class="old-price">$28</span>
+                                    </div>
+                                    <button class="btn btn-orange btn-add-cart mt-2">
+                                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 7 -->
+                        <div class="col-md-6 col-xl-4">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <button class="wishlist-btn"><i class="fa fa-heart-o"></i></button>
+                                    <i class="fa fa-couch"></i>
+                                </div>
+                                <div class="product-body">
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                        <span>(11)</span>
+                                    </div>
+                                    <h5>Modern Sofa</h5>
+                                    <div class="product-category">
+                                        <i class="fa fa-tag"></i> Home & Living
+                                    </div>
+                                    <div class="product-price">
+                                        $599 <span class="old-price">$750</span>
+                                    </div>
+                                    <button class="btn btn-orange btn-add-cart mt-2">
+                                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 8 -->
+                        <div class="col-md-6 col-xl-4">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <span class="badge-sale">SALE</span>
+                                    <button class="wishlist-btn"><i class="fa fa-heart-o"></i></button>
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <div class="product-body">
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <span>(27)</span>
+                                    </div>
+                                    <h5>Smart Watch</h5>
+                                    <div class="product-category">
+                                        <i class="fa fa-tag"></i> Electronics
+                                    </div>
+                                    <div class="product-price">
+                                        $149 <span class="old-price">$199</span>
+                                    </div>
+                                    <button class="btn btn-orange btn-add-cart mt-2">
+                                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Page navigation" class="pagination-custom">
+                        <ul class="pagination">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1"><i class="fa fa-chevron-left"></i></a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"><i class="fa fa-chevron-right"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- BOOTSTRAP JS -->
+    <!-- ============================================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
